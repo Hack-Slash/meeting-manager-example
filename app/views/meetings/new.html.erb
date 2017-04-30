@@ -5,10 +5,10 @@
 <% end %>
 
 <%= form_tag "/meetings", method: :post do %>
-<p>name: <input name="name" value="<%= @meeting.name %>"></p>
-<p>address: <input name="address" value="<%= @meeting.address %>"></p>
-<p>start_time: <input type="datetime-local" name="start_time" value="<%= @meeting.start_time_formatted %>"></p>
-<p>end_time: <input type="datetime-local" name="end_time" value="<%= @meeting.end_time_formatted %>"></p>
-<p>notes: <input name="notes" value="<%= @meeting.notes %>"></p>
-<input type="submit" value="Make a new Meeting">
+  <p>name: <input name="name" value="<%= @meeting.name %>"></p>
+  <p>address: <input name="address" value="<%= @meeting.address %>"></p>
+  <p>start_time: <input type="datetime-local" name="start_time" value="<%= @meeting.start_time_formatted %>"></p>
+  <p>end_time: <input type="datetime-local" name="end_time" value="<%= @meeting.end_time_formatted %>"></p>
+  <p>notes: <input name="notes" value="<%= @meeting.notes %>"></p>
+  <input type="submit" value="Make a new Meeting">
 <% end %>
