@@ -1,20 +1,2 @@
-<h2>Make a new meeting here</h2>
-
-<% @meeting.errors.full_messages.each do |error| %>
-  <%= error %>
-<% end %>
-
-<%= form_tag "/meetings", method: :post do %>
-  <p>name: <input name="name" value="<%= @meeting.name %>"></p>
-  <p>address: <input name="address" value="<%= @meeting.address %>"></p>
-  <p>start_time: <input type="datetime-local" name="start_time" value="<%= @meeting.start_time_formatted %>"></p>
-  <p>end_time: <input type="datetime-local" name="end_time" value="<%= @meeting.end_time_formatted %>"></p>
-  <p>notes: <input name="notes" value="<%= @meeting.notes %>"></p>
-  <div>
-    Tags:
-    <% Tag.all.each do |tag| %>
-      <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>"><%= tag.name %>
-    <% end %>
-  </div>
-  <input type="submit" value="Make a new Meeting">
-<% end %>
+<h1>Create a meeting</h1>
+<%= render "form", url: "/meetings", verb: :post %>
