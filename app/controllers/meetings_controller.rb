@@ -28,6 +28,11 @@ class MeetingsController < ApplicationController
       end_time: params[:end_time]
     )
     if @meeting.save
+       params[:tag_ids].each do |tag_id|
+        MeetingTag.create(
+          meeting_id: @meeting.id,
+          tag_id: tag_id
+        )
       flash[:success] = "You totally just made a new meeting"
       redirect_to "/meetings/#{@meeting.id}"
     else
