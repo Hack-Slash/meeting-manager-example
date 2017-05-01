@@ -34,4 +34,26 @@ class MeetingsController < ApplicationController
       render 'new.html.erb'
     end
   end
+
+  def edit
+    @meeting = Meeting.find_by(id: params[:id])
+    render 'edit.html.erb'
+  end
+
+  def update
+    @meeting = Meeting.find_by(id: params[:id])
+    if @meeting.update(
+      name: params[:name],
+      address: params[:address],
+      start_time: params[:start_time],
+      end_time: params[:end_time],
+      notes: params[:notes]
+    )
+      flash[:success] = "Meeting successfully updated!"
+      redirect_to "/meetings/#{@meeting.id}"
+    else
+      render 'edit.html.erb'
+    end
+  end
+
 end
