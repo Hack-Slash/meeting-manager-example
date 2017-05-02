@@ -1,6 +1,11 @@
 <div id="app">
+  <button v-on:click="toggleStartTimeSort()">Toggle sort by start time</button>
+  <p>Search by name: <input v-model="nameSearch" list="names"></p>
+  <datalist id="names">
+  <option v-for="meeting in meetings">{{ meeting.name }}</option>
+  </datalist>
   <h1><a href="/meetings">All meetings</a></h1>
-  <div v-for="meeting in meetings">
+  <div v-for="meeting in modifiedMeetings" v-if="isValidMeeting(meeting)">
     <h3><a v-bind:href="'/meetings/' +  meeting.id">{{ meeting.name }}</a></h3>
     <div v-for="tag in meeting.tags">
       <a v-bind:href="'/meetings?tag=' + tag.name">{{ tag.name }}</a>
@@ -12,21 +17,3 @@
 </div>
 
 <hr>
-<hr>
-<hr>
-<hr>
-<hr>
-<hr>
-
-<% @meetings.each do |meeting| %>
-  <h3><a href="/meetings/<%= meeting.id %>"><%= meeting.name %></a></h3>
-  <p>
-    Tags:
-    <% meeting.tags.each do |tag| %>
-      <a href="/meetings?tag=<%= tag.name %>"><%= tag.name %></a>
-    <% end %>
-  </p>
-  <p>Address: <%= meeting.address %></p>
-  <p>Start time: <%= meeting.start_time %></p>
-  <p>End time: <%= meeting.end_time %></p>
-<% end %>

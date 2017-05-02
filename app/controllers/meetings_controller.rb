@@ -1,6 +1,7 @@
 class MeetingsController < ApplicationController
   def index
     if params[:tag]
+      p 'has a tag' * 50
       @meetings = Tag.find_by(name: params[:tag]).meetings
     else
       @meetings = Meeting.all
